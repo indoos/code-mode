@@ -1,4 +1,4 @@
-# 🚀 Code Mode UTCP
+# Code Mode UTCP
 
 [![npm](https://img.shields.io/npm/v/@utcp/code-mode)](https://www.npmjs.com/package/@utcp/code-mode) 
 ![npm downloads](https://img.shields.io/npm/dt/@utcp/code-mode)
@@ -7,9 +7,9 @@
 > **The first plug-and-play library that enables Code Mode tool execution locally.**  
 > Transform your AI agents from clunky tool callers into efficient code executors — in just 3 lines.
 
-## ⚡ Why This Changes Everything
+## Why This Changes Everything
 
-**Research from [Cloudflare](https://blog.cloudflare.com/code-mode/) and [Anthropic](https://www.anthropic.com/engineering/code-execution-with-mcp) proves:**
+**Research from [Apple](https://machinelearning.apple.com/research/codeact), [Cloudflare](https://blog.cloudflare.com/code-mode/) and [Anthropic](https://www.anthropic.com/engineering/code-execution-with-mcp) proves:**
 - **60% faster execution** than traditional tool calling
 - **68% fewer tokens** consumed  
 - **88% fewer API round trips**
@@ -17,7 +17,7 @@
 
 **The insight:** LLMs excel at writing code but struggle with tool calls. Instead of exposing hundreds of tools directly, give them ONE tool that executes TypeScript code with access to your entire toolkit.
 
-## 📊 Comprehensive Benchmarks
+## Comprehensive Benchmarks
 
 Independent [Python benchmark study](https://github.com/imran31415/codemode_python_benchmark) validates the performance claims with **$9,536/year cost savings** at 1,000 scenarios/day:
 
@@ -29,13 +29,13 @@ Independent [Python benchmark study](https://github.com/imran31415/codemode_pyth
 
 ### **Why Code Mode Dominates:**
 
-🔄 **Batching Advantage** - Single code block replaces multiple API calls  
-🧠 **Cognitive Efficiency** - LLMs excel at code generation vs. tool orchestration  
-⚡ **Computational Efficiency** - No context re-processing between operations
+   **Batching Advantage** - Single code block replaces multiple API calls  
+   **Cognitive Efficiency** - LLMs excel at code generation vs. tool orchestration  
+   **Computational Efficiency** - No context re-processing between operations
 
 **Real-world results:** Independent benchmarks demonstrate significant cost savings, with **$9,536/year savings** possible at enterprise scale (1,000 scenarios/day).
 
-## 🎯 Get Started in 3 Lines
+## Get Started in 3 Lines
 
 ```typescript
 import { CodeModeUtcpClient } from '@utcp/code-mode';
@@ -47,7 +47,7 @@ const { result } = await client.callToolChain(`/* TypeScript */`);   // 3. Execu
 
 That's it. Your AI agent can now execute complex workflows in a single request instead of dozens.
 
-## 🔥 What You Get
+## What You Get
 
 ### **Progressive Tool Discovery**
 ```typescript
@@ -88,15 +88,15 @@ namespace github {
 }
 ```
 
-## 🛡️ Enterprise-Ready
+## Enterprise-Ready
 
-- **🔒 Secure VM Sandboxing** – Node.js isolates prevent unauthorized access
-- **⏱️ Timeout Protection** – Configurable execution limits prevent runaway code  
-- **📊 Complete Observability** – Full console output capture and error handling
-- **🎯 Zero External Dependencies** – Tools only accessible through registered UTCP/MCP servers
-- **🔍 Runtime Introspection** – Dynamic interface discovery for adaptive workflows
+- **Secure VM Sandboxing** – Node.js isolates prevent unauthorized access
+- **Timeout Protection** – Configurable execution limits prevent runaway code  
+- **Complete Observability** – Full console output capture and error handling
+- **Zero External Dependencies** – Tools only accessible through registered UTCP/MCP servers
+- **Runtime Introspection** – Dynamic interface discovery for adaptive workflows
 
-## 🌍 Universal Protocol Support
+## Universal Protocol Support
 
 Works with **any tool ecosystem:**
 
@@ -113,7 +113,7 @@ Works with **any tool ecosystem:**
 npm install @utcp/code-mode
 ```
 
-## 🎉 Even Easier: Ready-to-Use MCP Server
+## Even Easier: Ready-to-Use MCP Server
 
 **Want Code Mode without any setup?** Use our plug-and-play MCP server with Claude Desktop or any MCP client:
 
@@ -132,14 +132,14 @@ npm install @utcp/code-mode
 ```
 
 **That's it!** No installation, no Node.js knowledge required. The [UTCP-MCP Bridge](https://github.com/universal-tool-calling-protocol/utcp-mcp) automatically:
-- ✅ Downloads and runs the latest version via `npx`
-- ✅ Loads your tool configurations from JSON
-- ✅ Provides code execution capabilities to Claude Desktop
-- ✅ Gives you `call_tool_chain` as an MCP tool for TypeScript execution
+- Downloads and runs the latest version via `npx`
+- Loads your tool configurations from JSON
+- Provides code execution capabilities to Claude Desktop
+- Gives you `call_tool_chain` as an MCP tool for TypeScript execution
 
 **Perfect for non-developers** who want Code Mode power in Claude Desktop!
 
-## 🚪 Direct TypeScript Usage
+## Direct TypeScript Usage
 
 ### 1. **MCP Server Integration**
 Connect to any Model Context Protocol server:
@@ -203,7 +203,7 @@ console.log('Analysis Result:', result);
 
 ---
 
-## 🎛️ Advanced Features
+## Advanced Features
 
 ### **Multi-Protocol Tool Chains**
 Mix and match different tool ecosystems in a single execution:
@@ -326,7 +326,7 @@ const heavyResult = await client.callToolChain(`
 
 ---
 
-## 🤖 AI Agent Integration
+## AI Agent Integration
 
 Plug-and-play with any AI framework. The built-in prompt template handles all the complexity:
 
@@ -357,7 +357,7 @@ const response = await openai.chat.completions.create({
 
 ---
 
-## 📚 API Reference
+## API Reference
 
 ### **Core Methods**
 
@@ -384,23 +384,23 @@ Production-ready prompt template for AI agents.
 
 ---
 
-## 🔒 Security & Performance
+## Security & Performance
 
 ### **Secure by Design**
-- ✅ **Node.js VM sandboxing** – Isolated execution context
-- ✅ **No filesystem access** – Tools only through registered servers  
-- ✅ **Timeout protection** – Configurable execution limits
-- ✅ **Zero network access** – No external dependencies or API keys exposed
+- **Node.js VM sandboxing** – Isolated execution context
+- **No filesystem access** – Tools only through registered servers  
+- **Timeout protection** – Configurable execution limits
+- **Zero network access** – No external dependencies or API keys exposed
 
 ### **Performance Optimized**
-- ✅ **Minimal memory footprint** – VM contexts are lightweight
-- ✅ **Efficient tool caching** – TypeScript interfaces cached automatically
-- ✅ **Streaming console output** – Real-time log capture without buffering
-- ✅ **Identifier sanitization** – Handles invalid TypeScript identifiers gracefully
+- **Minimal memory footprint** – VM contexts are lightweight
+- **Efficient tool caching** – TypeScript interfaces cached automatically
+- **Streaming console output** – Real-time log capture without buffering
+- **Identifier sanitization** – Handles invalid TypeScript identifiers gracefully
 
 ---
 
-## 🔧 Development Experience
+## Development Experience
 
 ### **IDE Integration**
 Generate TypeScript definitions for full IntelliSense support:
@@ -433,7 +433,7 @@ logs.forEach(log => {
 
 ---
 
-## 🌟 Why Choose Code Mode UTCP?
+## Why Choose Code Mode UTCP?
 
 | Traditional Tool Calling | **Code Mode UTCP** | **Improvement** |
 |--------------------------|-------------------|----------------|
@@ -447,23 +447,23 @@ logs.forEach(log => {
 
 ### **Benchmark Methodology**
 The [comprehensive Python study](https://github.com/imran31415/codemode_python_benchmark) tested **16 realistic scenarios** across:
-- 📊 **Financial workflows** (invoicing, expense tracking)  
-- 🔧 **DevOps operations** (deployments, monitoring)
-- 📈 **Data processing** (analysis, reporting)
-- 🤝 **Business automation** (CRM, notifications)
+- **Financial workflows** (invoicing, expense tracking)  
+- **DevOps operations** (deployments, monitoring)
+- **Data processing** (analysis, reporting)
+- **Business automation** (CRM, notifications)
 
 **Models tested:** Claude Haiku, Gemini Flash  
 **Pricing basis:** $0.25/1M input, $1.25/1M output tokens  
 **Scale:** 1,000 scenarios/day = $9,536/year savings with Code Mode
 
-## 📖 Learn More
+## Learn More
 
-- 📄 **[Cloudflare Research](https://blog.cloudflare.com/code-mode/)** – Original code mode whitepaper
-- 🔬 **[Anthropic Study](https://www.anthropic.com/engineering/code-execution-with-mcp)** – MCP code execution benefits
-- 📊 **[Python Benchmark Study](https://github.com/imran31415/codemode_python_benchmark)** – Comprehensive performance analysis
-- 🔌 **[Ready-to-Use MCP Server](https://github.com/universal-tool-calling-protocol/utcp-mcp)** – Plug-and-play Claude Desktop integration
-- 🚀 **[UTCP Specification](https://github.com/universal-tool-calling-protocol/typescript-utcp)** – Official TypeScript implementation  
-- 🐛 **[Report Issues](https://github.com/universal-tool-calling-protocol/typescript-utcp/issues)** – Bug reports and feature requests
+- **[Cloudflare Research](https://blog.cloudflare.com/code-mode/)** – Original code mode whitepaper
+- **[Anthropic Study](https://www.anthropic.com/engineering/code-execution-with-mcp)** – MCP code execution benefits
+- **[Python Benchmark Study](https://github.com/imran31415/codemode_python_benchmark)** – Comprehensive performance analysis
+- **[Ready-to-Use MCP Server](https://github.com/universal-tool-calling-protocol/utcp-mcp)** – Plug-and-play Claude Desktop integration
+- **[UTCP Specification](https://github.com/universal-tool-calling-protocol/typescript-utcp)** – Official TypeScript implementation  
+- **[Report Issues](https://github.com/universal-tool-calling-protocol/typescript-utcp/issues)** – Bug reports and feature requests
 
 ## License
 
