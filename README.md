@@ -17,7 +17,7 @@ LLMs excel at writing code but struggle with tool calls. Instead of exposing hun
 - **88% fewer API round trips**
 - **98.7% reduction in context overhead** for complex workflows
 
-## Comprehensive Benchmarks
+## Benchmarks
 
 Independent [Python benchmark study](https://github.com/imran31415/codemode_python_benchmark) validates the performance claims with **$9,536/year cost savings** at 1,000 scenarios/day:
 
