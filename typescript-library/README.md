@@ -1,19 +1,10 @@
-<div align="center">
-<!-- <img alt="utcp code mode banner" src="https://github.com/user-attachments/assets/77723130-ecbc-4d1d-9e9b-20f978882699" width="80%" style="margin: 20px auto;"> -->
+# Code Mode UTCP
 
-<h1 align="center">🤖 Code-Mode Library: First library for tool calls via code execution</h1>
-<p align="center">
-    <a href="https://github.com/universal-tool-calling-protocol">
-        <img src="https://img.shields.io/github/followers/universal-tool-calling-protocol?label=Follow%20Org&logo=github" /></a>
-    <a href="https://img.shields.io/npm/dt/@utcp/code-mode" title="PyPI Version">
-        <img src="https://img.shields.io/npm/dt/@utcp/code-mode"/></a>
-    <a href="https://github.com/universal-tool-calling-protocol/code-mode/blob/main/LICENSE" alt="License">
-        <img src="https://img.shields.io/github/license/universal-tool-calling-protocol/code-mode" /></a>
- 
-  [![npm](https://img.shields.io/npm/v/@utcp/code-mode)](https://www.npmjs.com/package/@utcp/code-mode)
-</p>
-</div>
+[![npm](https://img.shields.io/npm/v/@utcp/code-mode)](https://www.npmjs.com/package/@utcp/code-mode) 
+![npm downloads](https://img.shields.io/npm/dt/@utcp/code-mode)
+![GitHub Stars](https://img.shields.io/github/stars/universal-tool-calling-protocol/typescript-utcp)
 
+> **The first plug-and-play Code Mode library that enables tool call via code execution locally.**  
 > Transform your AI agents from clunky tool callers into efficient code executors — in just 3 lines.
 
 ## Why This Changes Everything
@@ -26,7 +17,7 @@ LLMs excel at writing code but struggle with tool calls. Instead of exposing hun
 - **88% fewer API round trips**
 - **98.7% reduction in context overhead** for complex workflows
 
-## Benchmarks
+## Comprehensive Benchmarks
 
 Independent [Python benchmark study](https://github.com/imran31415/codemode_python_benchmark) validates the performance claims with **$9,536/year cost savings** at 1,000 scenarios/day:
 
@@ -42,29 +33,9 @@ Independent [Python benchmark study](https://github.com/imran31415/codemode_pyth
    **Cognitive Efficiency** - LLMs excel at code generation vs. tool orchestration  
    **Computational Efficiency** - No context re-processing between operations
 
-   ## Why Choose Code Mode UTCP?
-
-| Traditional Tool Calling | **Code Mode UTCP** | **Improvement** |
-|--------------------------|-------------------|----------------|
-| 15+ API round trips | **1 code execution** | **15x fewer requests** |
-| 50,000+ context tokens | **2,000 tokens** | **96% token reduction** |
-| 16 iterations (complex) | **1 iteration** | **88% faster** |
-| Higher token costs | **68% token reduction** | **$9,536/year savings** |
-| Manual error handling | **Automatic capture & logs** | **Zero-config observability** |
-| Tool-by-tool discovery | **Dynamic semantic search** | **Progressive disclosure** |
-| Vendor/protocol lock-in | **Universal compatibility** | **MCP, HTTP, File, CLI** |
-
-
 **Real-world results:** Independent benchmarks demonstrate significant cost savings, with **$9,536/year savings** possible at enterprise scale (1,000 scenarios/day).
 
-# Getting Started
-
-[<img width="2606" height="1445" alt="Frame 4 (4)" src="https://github.com/user-attachments/assets/58ba26ab-6e77-459b-a59a-eeb60d711746" />
-](https://www.youtube.com/watch?v=zsMjkPzmqhA)
-
 ## Get Started in 3 Lines
-
-### TypeScript
 
 ```typescript
 import { CodeModeUtcpClient } from '@utcp/code-mode';
@@ -72,16 +43,6 @@ import { CodeModeUtcpClient } from '@utcp/code-mode';
 const client = await CodeModeUtcpClient.create();                    // 1. Initialize
 await client.registerManual({ name: 'github', /* MCP config */ });  // 2. Add tools  
 const { result } = await client.callToolChain(`/* TypeScript */`);   // 3. Execute code
-```
-
-### Python
-
-```python
-from code_mode import CodeModeClient
-
-client = CodeModeClient.create()                                     # 1. Initialize
-await client.register_manual({'name': 'github', ...})                # 2. Add tools
-response = await client.call_tool_chain("# Python code")            # 3. Execute code
 ```
 
 That's it. Your AI agent can now execute complex workflows in a single request instead of dozens.
@@ -148,23 +109,8 @@ Works with **any tool ecosystem:**
 
 ## Installation
 
-### TypeScript/JavaScript
-
 ```bash
 npm install @utcp/code-mode
-```
-
-### Python
-
-```bash
-pip install code-mode
-```
-
-Or install from source:
-
-```bash
-cd python
-pip install -e .
 ```
 
 ## Even Easier: Ready-to-Use MCP Server
@@ -176,7 +122,7 @@ pip install -e .
   "mcpServers": {
     "code-mode": {
       "command": "npx",
-      "args": ["@utcp/code-mode-mcp"],
+      "args": ["@utcp/mcp-bridge"],
       "env": {
         "UTCP_CONFIG_FILE": "/path/to/your/.utcp_config.json"
       }
@@ -185,7 +131,7 @@ pip install -e .
 }
 ```
 
-**That's it!** No installation, no Node.js knowledge required. The [Code Mode MCP Server](https://github.com/universal-tool-calling-protocol/code-mode/tree/main/code-mode-mcp) automatically:
+**That's it!** No installation, no Node.js knowledge required. The [UTCP-MCP Bridge](https://github.com/universal-tool-calling-protocol/utcp-mcp) automatically:
 - Downloads and runs the latest version via `npx`
 - Loads your tool configurations from JSON
 - Provides code execution capabilities to Claude Desktop
@@ -253,48 +199,6 @@ const { result, logs } = await client.callToolChain(`
 
 console.log('Analysis Result:', result);
 // console output: 'PR "Fix memory leak in hooks" analysis complete'
-```
-
-### **Python Code Execution**
-Replace multiple tool calls with a single Python execution:
-
-```python
-from code_mode import CodeModeClient
-
-client = CodeModeClient.create()
-await client.register_manual({
-    'name': 'github',
-    'call_template_type': 'mcp',
-    'config': {...}
-})
-
-# Execute Python code with tool access
-response = await client.call_tool_chain("""
-# Traditional: 4 separate API round trips → Code Mode: 1 execution
-pr = await github.get_pull_request(owner='microsoft', repo='vscode', pull_number=1234)
-comments = await github.get_pull_request_comments(owner='microsoft', repo='vscode', pull_number=1234)
-reviews = await github.get_pull_request_reviews(owner='microsoft', repo='vscode', pull_number=1234)
-files = await github.get_pull_request_files(owner='microsoft', repo='vscode', pull_number=1234)
-
-# Process data in-sandbox (no token overhead)
-summary = {
-    'title': pr['title'],
-    'state': pr['state'],
-    'author': pr['user']['login'],
-    'stats': {
-        'comments': len(comments),
-        'reviews': len(reviews),
-        'files_changed': len(files),
-        'approvals': len([r for r in reviews if r['state'] == 'APPROVED'])
-    }
-}
-
-print(f"PR '{pr['title']}' analysis complete")
-return summary
-""")
-
-print('Analysis Result:', response['result'])
-# Logs: ["PR 'Fix memory leak in hooks' analysis complete"]
 ```
 
 ---
@@ -529,6 +433,17 @@ logs.forEach(log => {
 
 ---
 
+## Why Choose Code Mode UTCP?
+
+| Traditional Tool Calling | **Code Mode UTCP** | **Improvement** |
+|--------------------------|-------------------|----------------|
+| 15+ API round trips | **1 code execution** | **15x fewer requests** |
+| 50,000+ context tokens | **2,000 tokens** | **96% token reduction** |
+| 16 iterations (complex) | **1 iteration** | **88% faster** |
+| Higher token costs | **68% token reduction** | **$9,536/year savings** |
+| Manual error handling | **Automatic capture & logs** | **Zero-config observability** |
+| Tool-by-tool discovery | **Dynamic semantic search** | **Progressive disclosure** |
+| Vendor/protocol lock-in | **Universal compatibility** | **MCP, HTTP, File, CLI** |
 
 ### **Benchmark Methodology**
 The [comprehensive Python study](https://github.com/imran31415/codemode_python_benchmark) tested **16 realistic scenarios** across:
@@ -546,8 +461,9 @@ The [comprehensive Python study](https://github.com/imran31415/codemode_python_b
 - **[Cloudflare Research](https://blog.cloudflare.com/code-mode/)** – Original code mode whitepaper
 - **[Anthropic Study](https://www.anthropic.com/engineering/code-execution-with-mcp)** – MCP code execution benefits
 - **[Python Benchmark Study](https://github.com/imran31415/codemode_python_benchmark)** – Comprehensive performance analysis
-- **[UTCP Specification](https://utcp.io)** – Official TypeScript implementation  
-- **[Report Issues](https://github.com/universal-tool-calling-protocol/code-mode/issues)** – Bug reports and feature requests
+- **[Ready-to-Use MCP Server](https://github.com/universal-tool-calling-protocol/utcp-mcp)** – Plug-and-play Claude Desktop integration
+- **[UTCP Specification](https://github.com/universal-tool-calling-protocol/typescript-utcp)** – Official TypeScript implementation  
+- **[Report Issues](https://github.com/universal-tool-calling-protocol/typescript-utcp/issues)** – Bug reports and feature requests
 
 ## License
 
