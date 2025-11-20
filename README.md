@@ -46,12 +46,24 @@ Independent [Python benchmark study](https://github.com/imran31415/codemode_pyth
 
 ## Get Started in 3 Lines
 
+### TypeScript
+
 ```typescript
 import { CodeModeUtcpClient } from '@utcp/code-mode';
 
 const client = await CodeModeUtcpClient.create();                    // 1. Initialize
 await client.registerManual({ name: 'github', /* MCP config */ });  // 2. Add tools  
 const { result } = await client.callToolChain(`/* TypeScript */`);   // 3. Execute code
+```
+
+### Python
+
+```python
+from code_mode import CodeModeClient
+
+client = CodeModeClient.create()                                     # 1. Initialize
+await client.register_manual({'name': 'github', ...})                # 2. Add tools
+response = await client.call_tool_chain("# Python code")            # 3. Execute code
 ```
 
 That's it. Your AI agent can now execute complex workflows in a single request instead of dozens.
@@ -118,8 +130,23 @@ Works with **any tool ecosystem:**
 
 ## Installation
 
+### TypeScript/JavaScript
+
 ```bash
 npm install @utcp/code-mode
+```
+
+### Python
+
+```bash
+pip install code-mode
+```
+
+Or install from source:
+
+```bash
+cd python
+pip install -e .
 ```
 
 ## Even Easier: Ready-to-Use MCP Server
@@ -208,6 +235,48 @@ const { result, logs } = await client.callToolChain(`
 
 console.log('Analysis Result:', result);
 // console output: 'PR "Fix memory leak in hooks" analysis complete'
+```
+
+### **Python Code Execution**
+Replace multiple tool calls with a single Python execution:
+
+```python
+from code_mode import CodeModeClient
+
+client = CodeModeClient.create()
+await client.register_manual({
+    'name': 'github',
+    'call_template_type': 'mcp',
+    'config': {...}
+})
+
+# Execute Python code with tool access
+response = await client.call_tool_chain("""
+# Traditional: 4 separate API round trips → Code Mode: 1 execution
+pr = await github.get_pull_request(owner='microsoft', repo='vscode', pull_number=1234)
+comments = await github.get_pull_request_comments(owner='microsoft', repo='vscode', pull_number=1234)
+reviews = await github.get_pull_request_reviews(owner='microsoft', repo='vscode', pull_number=1234)
+files = await github.get_pull_request_files(owner='microsoft', repo='vscode', pull_number=1234)
+
+# Process data in-sandbox (no token overhead)
+summary = {
+    'title': pr['title'],
+    'state': pr['state'],
+    'author': pr['user']['login'],
+    'stats': {
+        'comments': len(comments),
+        'reviews': len(reviews),
+        'files_changed': len(files),
+        'approvals': len([r for r in reviews if r['state'] == 'APPROVED'])
+    }
+}
+
+print(f"PR '{pr['title']}' analysis complete")
+return summary
+""")
+
+print('Analysis Result:', response['result'])
+# Logs: ["PR 'Fix memory leak in hooks' analysis complete"]
 ```
 
 ---
